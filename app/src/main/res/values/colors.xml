@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Шаблон
+     <color name="">#</color>
+     -->
+
+    <color name="purple_200">#FFBB86FC</color>
+    <color name="purple_500">#FF6200EE</color>
+    <color name="purple_700">#FF3700B3</color>
+    <color name="teal_200">#FF03DAC5</color>
+    <color name="teal_700">#FF018786</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="abbadon_black">#000000</color>
+    <color name="white_scars">#ffffff</color>
+    <color name="corvus_black">#171314</color>
+    <color name="grey_seer">#a2a5a7</color>
+    <color name="averland_sunset">#fbb81c</color>
+    <color name="macragge_blue">#0f3d7c</color>
+    <color name="calgar_blue">#2a497f</color>
+    <color name="slaanesh_grey">#8b8893</color>
+    <color name="warpfiend_grey">#66656e</color>
+    <color name="emperors_children">#b74073</color>
+    <color name="fulgrim_pink">#f3abca</color>
+    <color name="pink_horror">#8e2757</color>
+
+</resources>
