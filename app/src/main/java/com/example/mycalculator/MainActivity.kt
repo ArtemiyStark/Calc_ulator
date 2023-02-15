@@ -10,32 +10,51 @@ import kotlin.ArithmeticException
 import android.content.Intent
 
 class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState : Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
     }
-
+    // змінна для перевірки наявності крапки
     var dot:Boolean = false
-    var num:Boolean = false
+    // змінна для перевірки наявності числа
+    var num:Boolean = true                      // true бо є цифра нуль
 
-    fun onDigit(view: View){                                            // This function gets executed when a number is clicked
-        if (tvInput.text == "0"){
+    // функція при натисканні цифри
+    fun onDigit(view: View){                                            // This function gets executed when a digit is clicked
+        if (tvInput.text.toString() == "0"){
             tvInput.text = ""
         }
         tvInput.append((view as Button).text)
         num= true
-        dot = false
+        //dot = false
     }
 
-    fun onBksp(view: View){                                                             // Deletes the previous elements
+    fun onBksp(view: View){
+
+        // Deletes the previous elements
         if (tvInput.text.isNotBlank()){
+            if (tvInput.text.last() == '.'){
+                dot = false
+            }
             tvInput.text = tvInput.text.substring(0, (tvInput.text.length)-1)
+            if (tvInput.text.last() == '0' ||
+                tvInput.text.last() == '1' ||
+                tvInput.text.last() == '2' ||
+                tvInput.text.last() == '3' ||
+                tvInput.text.last() == '4' ||
+                tvInput.text.last() == '5' ||
+                tvInput.text.last() == '6' ||
+                tvInput.text.last() == '7' ||
+                tvInput.text.last() == '8' ||
+                tvInput.text.last() == '9'){
+                num = true
+            }
         }
     }
 
     fun onClear(view: View){                                          // Clears the screen
         tvInput.text= ""
-        num=false
+        num=true
         dot=false
     }
 
@@ -82,7 +101,7 @@ class MainActivity : AppCompatActivity() {
             var value = tvInput.text.toString()
             var prefixcheckker = ""
 
-            try {                                      // In try block cuz some people do division by zero....
+           // try {                                      // In try block cuz some people do division by zero....
 
                 if (value.startsWith("-")) {
                     prefixcheckker = "-"
@@ -142,7 +161,8 @@ class MainActivity : AppCompatActivity() {
                     }
 
                     else{
-                        tvInput.text = (num1.toDouble() / num2.toDouble()).toString()
+                        var num3:Double = num1.toDouble() / num2.toDouble()
+                        tvInput.text = num3.toString()
                     }
                 }
 
@@ -153,14 +173,14 @@ class MainActivity : AppCompatActivity() {
 
                     tvInput.text = ((num1.toDouble() * num2.toDouble())/100).toString()
                 }
-            } catch (e: ArithmeticException) {
-                e.printStackTrace()
-            }
+            //} catch (e: ArithmeticException) {
+            //    e.printStackTrace()
+            //}
             val intent = Intent(this, SecondActivity::class.java)
             intent.putExtra("myResult", tvInput.text.toString()  )
             // start your next activity
             startActivity(intent)
-            tvInput.text = ""
+            onClear(view)
 
         }
     }

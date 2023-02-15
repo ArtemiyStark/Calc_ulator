@@ -14,6 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="350dp"
         android:layout_margin="1dp"
+        android:text=""
         android:background="@color/corvus_black"
         android:fontFamily="@font/ubuntu_medium"
         android:gravity="end|center_vertical|bottom"
